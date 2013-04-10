@@ -16,6 +16,7 @@ def main():
     screensize = (800, 600)
     screen = pygame.display.set_mode(screensize)
     pygame.mouse.set_visible(0)
+    pygame.display.set_caption('Felix and Herbert')    
 
 #create the wallpaper, and make it fill the screen
     wallpaper = codeclub.load_image('hall.jpg')
