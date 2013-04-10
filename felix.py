@@ -30,6 +30,9 @@ def main():
     herbert = codeclub.sprite()
     herbert.set_costume('mouse1.png', 60)
     allsprites = pygame.sprite.Group((herbert, felix))
+    score = 0
+    highscore = 0
+    font = pygame.font.Font(None, 36)
     
 #Main Loop
     while True:
@@ -52,11 +55,23 @@ def main():
         if felix.has_caught(herbert):
             felix.freeze(20)
             felix.say("I've got you!", 60)
+            score = score - 1000
+            if score < 0:
+                score = 0
+            
+    #update score
+        score = score + 1
+        if score > highscore:
+            highscore = score
                 
     #Draw Everything
         screen.blit(background, (0, 0))
         allsprites.draw(screen)
         felix.speak(screen)
+        score_text = font.render("Score :" + str(score), 1, (10, 10, 10))
+        highscore_text = font.render("High Score :" + str(highscore), 1, (10, 10, 10))
+        screen.blit(score_text, (0, 0))
+        screen.blit(highscore_text, (0, 25))
         pygame.display.flip()
 
 #Game Over
