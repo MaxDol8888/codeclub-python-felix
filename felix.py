@@ -15,6 +15,7 @@ def main():
     pygame.init()
     screensize = (800, 600)
     screen = pygame.display.set_mode(screensize)
+    pygame.mouse.set_visible(0)
 
 #create the wallpaper, and make it fill the screen
     wallpaper = codeclub.load_image('hall.jpg')
@@ -24,6 +25,9 @@ def main():
     
 #Prepare Game Objects
     clock = pygame.time.Clock()
+    herbert = codeclub.sprite()
+    herbert.set_costume('mouse1.png', 60)
+    allsprites = pygame.sprite.Group(herbert)
     
 #Main Loop
     while True:
@@ -36,8 +40,12 @@ def main():
             elif event.type == KEYDOWN and event.key == K_ESCAPE:
                 return
 
+    #Move the sprites
+        herbert.move_to(pygame.mouse.get_pos())
+                
     #Draw Everything
         screen.blit(background, (0, 0))
+        allsprites.draw(screen)
         pygame.display.flip()
 
 #Game Over
