@@ -47,10 +47,16 @@ def main():
         felix.move_unless_frozen(2)
         herbert.move_to(pygame.mouse.get_pos())
         herbert.point_towards(felix)
+        
+    #See whether Felix has caught Herbert
+        if felix.has_caught(herbert):
+            felix.freeze(20)
+            felix.say("I've got you!", 60)
                 
     #Draw Everything
         screen.blit(background, (0, 0))
         allsprites.draw(screen)
+        felix.speak(screen)
         pygame.display.flip()
 
 #Game Over
