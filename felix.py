@@ -25,9 +25,11 @@ def main():
     
 #Prepare Game Objects
     clock = pygame.time.Clock()
+    felix = codeclub.sprite()
+    felix.set_costume('cat1-a.gif', 100)
     herbert = codeclub.sprite()
     herbert.set_costume('mouse1.png', 60)
-    allsprites = pygame.sprite.Group(herbert)
+    allsprites = pygame.sprite.Group((herbert, felix))
     
 #Main Loop
     while True:
@@ -41,7 +43,10 @@ def main():
                 return
 
     #Move the sprites
+        felix.point_towards(herbert)
+        felix.move_unless_frozen(2)
         herbert.move_to(pygame.mouse.get_pos())
+        herbert.point_towards(felix)
                 
     #Draw Everything
         screen.blit(background, (0, 0))
