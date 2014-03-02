@@ -26,9 +26,9 @@ def main():
     
 #Prepare Game Objects
     clock = pygame.time.Clock()
-    felix = codeclub.sprite()
+    felix = codeclub.CodeClubSprite()
     felix.set_costume('cat1-a.gif', 100)
-    herbert = codeclub.sprite()
+    herbert = codeclub.CodeClubSprite()
     herbert.set_costume('mouse1.png', 60)
     allsprites = pygame.sprite.Group((herbert, felix))
     score = 0
